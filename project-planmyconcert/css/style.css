@@ -1,0 +1,97 @@
+:root {
+    --primary: #667eea;
+    --secondary: #764ba2;
+    --text: #333;
+    --bg: #f7f7fb;
+}
+
+* {box-sizing: border-box;}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    /* background-image: url("../image/bg\ pmc.jpg"); */
+    min-height: 100vh;
+}
+
+.navbar {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: saturate(180%) blur(6px);
+    transition: box-shadow .3s ease;
+    }
+
+.navbar.scrolled {box-shadow: 0 2px 12px rgba(0,0,0,0.12);}
+
+/* navbar darkmode */
+.dark .navbar {
+    background: rgba(20,22,35,0.9);
+}
+
+.dark .navbar .nav-link {
+    color: #ddd;
+}
+
+.dark .navbar .nav-link:hover {
+    color: #fff;
+}
+
+.dark .navbar-brand {
+    color: #fff;
+}
+
+.dark .brand-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.btn-ct {
+    background: #fff;
+    color: var(--primary);
+    border-radius: 999px;
+    padding: 12px 28px;
+    font-weight: 600;
+    transition: transform .2s, box-shadow .2s;
+}
+.btn-ct:hover {transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15);}
+
+.card-ct {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transition: transform .2s;
+}
+.card-ct:hover {transform: translateY(-4px);}
+
+.hero {
+    color: #fff;
+    text-align: center;
+    padding: 64px 16px;
+}
+.hero h1 {text-shadow: 2px 2px 4px rgba(0,0,0,0.25);}
+
+footer {
+    background: rgba(255,255,255,0.95);
+    color: var(--text);
+    padding: 32px 16px;
+    text-align: center;
+}
+
+.dark body {background: #0f1220;}
+.dark .navbar {background: rgba(20,22,35,0.9);}
+.dark footer {background: rgba(20,22,35,0.9); color: #ddd;}
+.dark .card-ct {background: #1b1f34; color: #ddd;}
+.dark .btn-ct {background: #1b1f34; color: #fff;}
+
+@media (max-width: 768px) {
+    .hero h1 {font-size: 32px;}
+    .navbar-brand {font-size: 20px;}
+}

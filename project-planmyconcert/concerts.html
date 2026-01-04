@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanMyConcert - Konser</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand brand-gradient" href="index.html">🎵 PlanMyConcert</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="concerts.html">Konser</a></li>
+                        <li class="nav-item"><a class="nav-link" href="booking.html">Pemesanan</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Galeri</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">Tentang</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
+                        <li class="nav-item"><a class="nav-link" href="terms.html">Ketentuan</a></li>
+                    </ul>
+                    <div class="ms-3 d-flex align-items-center">
+                        <label class="form-check-label me-2 text-muted">Dark</label>
+                        <input type="checkbox" id="darkToggle" class="form-check-input">
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Konser Tersedia</h1>
+            <p>Pilih konser favoritmu dan pesan tiketnya sekarang!</p>
+        </section>
+        <section class="row g-4">
+        <!-- ulangi pola card -->
+        <article class="col-md-4">
+            <div class="card card-ct" onclick="selectConcert('RIIZE','Jakarta','10 Januari',2850000)">
+                <img src="image/RIIZE - RIIZING LOUD.jpg" class="card-img-top" alt="RIIZE">
+                <div class="card-body">
+                    <h5 class="card-title">RIIZE - RIIZING LOUD</h5>
+                    <p class="card-text">📍 ICE BSD City Hall 5-6, Tangerang · 📅 10 Januari 2026 · 🕐 15.00 WIB</p>
+                    <strong class="text-primary">Rp 2.850.000</strong>
+                </div>
+            </div>
+        </article>
+        <article class="col-md-4">
+            <div class="card card-ct" onclick="selectConcert('ATEEZ','ICE BSD City Hall 5-6 Tangerang','31 Januari 2026',2950000)">
+                <img src="image/ATEEZ - ATEEZ 2026 World Tour.jpg" class="card-img-top" alt="ATEEZ">
+                <div class="card-body">
+                    <h5 class="card-title">ATEEZ - ATEEZ 2026 World Tour</h5>
+                    <p class="card-text">📍 ICE BSD City Hall 5-6, Tangerang · 📅 31 Januari 2026 · 🕐 17.00 WIB</p>
+                    <strong class="text-primary">Rp 2.950.000</strong>
+                </div>
+            </div>
+        </article>
+        <article class="col-md-4">
+            <div class="card card-ct" onclick="selectConcert('Dream Theater','Stadion Madya GBK, Jakarta','7 Februari 2026',100000)">
+                <img src="image/Dream Theater.jpg" class="card-img-top" alt="Dream Theater">
+                <div class="card-body">
+                    <h5 class="card-title">Dream Theater</h5>
+                    <p class="card-text">📍 Stadion Madya GBK, Jakarta · 📅 7 Februari 2026 · 🕐 19:00 WIB</p>
+                    <strong class="text-primary">Rp 1.000.000</strong>
+                </div>
+            </div>
+        </article>
+        <article class="col-md-4">
+            <div class="card card-ct" onclick="selectConcert('Westlife - A Gala Evening','NICE PIK 2, Jakarta','10 Februari 2026',825000)">
+                <img src="image/Westlife - A Gala Evening.jpg" class="card-img-top" alt="Westlife - A Gala Evening">
+                <div class="card-body">
+                    <h5 class="card-title">Westlife - A Gala Evening</h5>
+                    <p class="card-text">📍 NICE PIK 2, Jakarta · 📅 10 Februari 2026 · 🕐 19:30 WIB</p>
+                    <strong class="text-primary">Rp 825.000</strong>
+                </div>
+            </div>
+        </article>
+        <article class="col-md-4">
+            <div class="card card-ct" onclick="selectConcert('aespa - SYNK','ICE BSD City Hall 5-6','4 april 2026',1500000)">
+                <img src="image/aespa - SYNK.jpg" class="card-img-top" alt="aespa - SYNK">
+                <div class="card-body">
+                    <h5 class="card-title">aespa - SYNK: aeXIS LINE in Jakarta</h5>
+                    <p class="card-text">📍ICE BSD City Hall 5-6  · 📅 4 april 2026 · 🕐 15:00 WIB</p>
+                    <strong class="text-primary">Rp 1.500.000</strong>
+                </div>
+            </div>
+        </article>
+        <article class="col-md-4">
+            <div class="card card-ct" onclick="selectConcert('NCT WISH','ICE BSD City Hall 5, Tangerang','11 april 2026',1250000)">
+                <img src="image/NCT WISH - INTO THE WISH.jpg" class="card-img-top" alt="NCT WISH">
+                <div class="card-body">
+                    <h5 class="card-title">NCT WISH - INTO THE WISH</h5>
+                    <p class="card-text">📍ICE BSD City Hall 5, Tangerang · 📅 11 april 2026 · 🕐 15:00 WIB</p>
+                    <strong class="text-primary">Rp 1.250.000</strong>
+                </div>
+            </div>
+        </article>
+        <article class="col-md-4">
+            <div class="card card-ct" onclick="selectConcert('Deep Purple & Slank','Indonesia Arena  GBK','18 april 2026',500000)">
+                <img src="image/Deep Purple & Slank - All Greatest Hits Live.jpg" class="card-img-top" alt="Deep Purple & Slank - All Greatest Hits Live">
+                <div class="card-body">
+                    <h5 class="card-title">Deep Purple & Slank - All Greatest Hits Live</h5>
+                    <p class="card-text">📍 Indonesia Arena  GBK · 📅 18 april 2026 · 🕐 19:00 WIB</p>
+                    <strong class="text-primary">Rp 500.000</strong>
+                </div>
+            </div>
+        </article>
+        <article class="col-md-4">
+            <div class="card card-ct" onclick="selectConcert('TREASURE','Indonesia Arena  GBK','26 april 2026',2750000)">
+                <img src="image/TREASURE - PULSE ON IN Jakarta.jpg" class="card-img-top" alt="TREASURE ">
+                <div class="card-body">
+                    <h5 class="card-title">TREASURE - PULSE ON IN Jakarta</h5>
+                    <p class="card-text">📍Indonesia Arena  GBK  · 📅 26 april 2026 · 🕐 19:00 WIB</p>
+                    <strong class="text-primary">Rp 2.750.000</strong>
+                </div>
+            </div>
+        </article>
+        <article class="col-md-4">
+            <div class="card card-ct" onclick="selectConcert('Hammersonic Festival 2026','NICE PIK 2, Tangerang','3 mei 2026',2750000)">
+                <img src="image/Hammersonic Festival 2026.jpg" class="card-img-top" alt="Hammersonic Festival 2026">
+                <div class="card-body">
+                    <h5 class="card-title">Hammersonic Festival 2026</h5>
+                    <p class="card-text">📍NICE PIK 2, Tangerang  · 📅 3 mei 2026 · 🕐 16:00 WIB</p>
+                    <strong class="text-primary">Rp 2.750.000</strong>
+                </div>
+            </div>
+        </article>
+    </section>
+    <section class="my-4">
+        <a class="btn-ct" href="booking.html">Lanjut ke Pemesanan</a>
+        <a class="btn-ct" href="https://www.instagram.com/sttnf_official/" target="_blank" rel="noopener">Ikuti Instagram</a>
+    </section>
+</main>
+
+    <footer>
+        <div class="container">
+            <div class="d-flex justify-content-center gap-3 mb-3">
+                <a href="https://www.instagram.com/sttnf_official/" target="_blank" rel="noopener">📷</a>
+                <a href="https://www.youtube.com/@STTNF" target="_blank" rel="noopener">📺</a>
+                <a href="https://x.com/STTTerpaduNF1" target="_blank" rel="noopener">🐦</a>
+            </div>
+            <p>© 2026 PlanMyConcert by Kelompok 5.</p>
+            <p class="text-muted">Platform Pemesanan Tiket Konser Terpercaya di Indonesia</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConcertTix - Pemesanan Tiket Konser</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .concerts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .concert-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .concert-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .concert-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .concert-info {
+            padding: 20px;
+        }
+
+        .concert-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .concert-info p {
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .price {
+            font-size: 24px;
+            color: #667eea;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .booking-form {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 40px auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .ticket-summary {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .total {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            border-top: 2px solid #ddd;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .success-message {
+            background: white;
+            border-radius: 15px;
+            padding: 60px 40px;
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .success-icon {
+            font-size: 80px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .ticket-details {
+            background: #f5f5f5;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .booking-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🎵 ConcertTix</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')">Beranda</a></li>
+                <li><a href="#" onclick="showPage('concerts')">Konser</a></li>
+                <li><a href="#" onclick="showPage('about')">Tentang</a></li>
+                <li><a href="#" onclick="showPage('contact')">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Halaman 1: Beranda -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>Selamat Datang di ConcertTix</h1>
+                <p>Platform Pemesanan Tiket Konser Terpercaya</p>
+                <button class="btn" onclick="showPage('concerts')">Lihat Konser</button>
+            </div>
+
+            <div class="concerts-grid">
+                <div class="concert-card" onclick="selectConcert('Special Festival 2024', 'Jakarta', '15 Januari 2025', 500000)">
+                    <div class="concert-img">🎸 FEAST</div>
+                    <div class="concert-info">
+                        <h3>Special Festival 2024</h3>
+                        <p>📍 Jakarta International Stadium</p>
+                        <p>📅 15 Januari 2025</p>
+                        <p>🕐 19:00 WIB</p>
+                        <div class="price">Rp 500.000</div>
+                    </div>
+                </div>
+
+                <div class="concert-card" onclick="selectConcert(' Special Night With Bernadya', 'Bandung', '20 Januari 2025', 350000)">
+                    <div class="concert-img">🎷 BERNADYA</div>
+                    <div class="concert-info">
+                        <h3>Night With Bernadya</h3>
+                        <p>📍 Bandung Convention Center</p>
+                        <p>📅 20 Januari 2025</p>
+                        <p>🕐 20:00 WIB</p>
+                        <div class="price">Rp 350.000</div>
+                    </div>
+                </div>
+
+                <div class="concert-card" onclick="selectConcert('Ungu Concert Spectacular', 'Surabaya', '25 Januari 2025', 450000)">
+                    <div class="concert-img">🎤 Ungu</div>
+                    <div class="concert-info">
+                        <h3>Ungu Concert Spectacular</h3>
+                        <p>📍 Surabaya Arena</p>
+                        <p>📅 25 Januari 2025</p>
+                        <p>🕐 18:00 WIB</p>
+                        <div class="price">Rp 450.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Halaman 2: Daftar Konser -->
+        <div id="concerts" class="page">
+            <div class="hero">
+                <h1>Konser Tersedia</h1>
+                <p>Pilih konser favoritmu dan pesan tiketnya sekarang!</p>
+            </div>
+
+            <div class="concerts-grid">
+                <div class="concert-card" onclick="selectConcert('Special Festival 2024', 'Jakarta', '15 Januari 2025', 500000)">
+                    <div class="concert-img">🎸 FEAST</div>
+                    <div class="concert-info">
+                        <h3>Special Festival 2024</h3>
+                        <p>📍 Jakarta International Stadium</p>
+                        <p>📅 15 Januari 2025</p>
+                        <p>🕐 19:00 WIB</p>
+                        <div class="price">Rp 500.000</div>
+                    </div>
+                </div>
+
+                <div class="concert-card" onclick="selectConcert('Bernadya ', 'Bandung', '20 Januari 2025', 350000)">
+                    <div class="concert-img">🎷 BERNADA</div>
+                    <div class="concert-info">
+                        <h3>Jazz Night</h3>
+                        <p>📍 Bandung Convention Center</p>
+                        <p>📅 20 Januari 2025</p>
+                        <p>🕐 20:00 WIB</p>
+                        <div class="price">Rp 350.000</div>
+                    </div>
+                </div>
+
+                <div class="concert-card" onclick="selectConcert('Ungu Concert Spectacular', 'Surabaya', '25 Januari 2025', 450000)">
+                    <div class="concert-img">🎤 Ungu</div>
+                    <div class="concert-info">
+                        <h3>Ungu Concert Spectacular</h3>
+                        <p>📍 Surabaya Arena</p>
+                        <p>📅 25 Januari 2025</p>
+                        <p>🕐 18:00 WIB</p>
+                        <div class="price">Rp 450.000</div>
+                    </div>
+                </div>
+
+                <div class="concert-card" onclick="selectConcert('Bruno Mars', 'Bali', '1 Februari 2025', 600000)">
+                    <div class="concert-img">🎧 Bruno Mars</div>
+                    <div class="concert-info">
+                        <h3>Bruno Mars</h3>
+                        <p>📍 Bali Beach Arena</p>
+                        <p>📅 1 Februari 2025</p>
+                        <p>🕐 21:00 WIB</p>
+                        <div class="price">Rp 600.000</div>
+                    </div>
+                </div>
+
+                <div class="concert-card" onclick="selectConcert('Hindia Music Night', 'Yogyakarta', '5 Februari 2025', 300000)">
+                    <div class="concert-img">🎼 HINDIA</div>
+                    <div class="concert-info">
+                        <h3>Hindia Music Night</h3>
+                        <p>📍 Yogyakarta Cultural Center</p>
+                        <p>📅 5 Februari 2025</p>
+                        <p>🕐 19:30 WIB</p>
+                        <div class="price">Rp 300.000</div>
+                    </div>
+                </div>
+
+                <div class="concert-card" onclick="selectConcert('BlackPink', 'Jakarta', '10 Februari 2025', 400000)">
+                    <div class="concert-img">🎻 BlackPink</div>
+                    <div class="concert-info">
+                        <h3>Black Pink Concert</h3>
+                        <p>📍 Jakarta Concert Hall</p>
+                        <p>📅 10 Februari 2025</p>
+                        <p>🕐 19:00 WIB</p>
+                        <div class="price">Rp 400.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Halaman 3: Form Pemesanan -->
+        <div id="booking" class="page">
+            <div class="booking-form">
+                <h2 style="text-align: center; color: #667eea; margin-bottom: 30px;">Form Pemesanan Tiket</h2>
+                
+                <div class="form-group">
+                    <label>Konser yang Dipilih</label>
+                    <input type="text" id="selectedConcert" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="fullName" placeholder="Masukkan nama lengkap" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="email@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>No. Telepon</label>
+                    <input type="tel" id="phone" placeholder="08xxxxxxxxxx" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Jumlah Tiket</label>
+                    <input type="number" id="ticketQty" min="1" max="10" value="1" onchange="updateTotal()">
+                </div>
+
+                <div class="form-group">
+                    <label>Kategori Tiket</label>
+                    <select id="ticketCategory" onchange="updateTotal()">
+                        <option value="1">Regular</option>
+                        <option value="1.5">VIP (+50%)</option>
+                        <option value="2">VVIP (+100%)</option>
+                    </select>
+                </div>
+
+                <div class="ticket-summary">
+                    <h3 style="margin-bottom: 15px; color: #333;">Ringkasan Pemesanan</h3>
+                    <div class="summary-row">
+                        <span>Harga Tiket</span>
+                        <span id="basePrice">Rp 0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Jumlah Tiket</span>
+                        <span id="qtyDisplay">1</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Kategori</span>
+                        <span id="categoryDisplay">Regular</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total Pembayaran</span>
+                        <span id="totalPrice">Rp 0</span>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="processBooking()" style="width: 100%; margin-top: 20px;">Pesan Sekarang</button>
+            </div>
+        </div>
+
+        <!-- Halaman 4: Konfirmasi Pemesanan -->
+        <div id="confirmation" class="page">
+            <div class="success-message">
+                <div class="success-icon">✓</div>
+                <h2 style="color: #4CAF50; margin-bottom: 20px;">Pemesanan Berhasil!</h2>
+                <p style="color: #666; margin-bottom: 30px;">Terima kasih telah memesan tiket konser. Detail pemesanan Anda:</p>
+                
+                <div class="ticket-details">
+                    <div class="detail-row">
+                        <strong>Kode Booking:</strong>
+                        <span id="bookingCode">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Nama:</strong>
+                        <span id="confirmName">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Email:</strong>
+                        <span id="confirmEmail">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Konser:</strong>
+                        <span id="confirmConcert">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Jumlah Tiket:</strong>
+                        <span id="confirmQty">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Total Pembayaran:</strong>
+                        <span id="confirmTotal" style="color: #667eea; font-weight: bold;">-</span>
+                    </div>
+                </div>
+
+                <p style="color: #666; margin: 20px 0;">Email konfirmasi telah dikirim ke alamat email Anda.</p>
+                
+                <button class="btn" onclick="showPage('home')">Kembali ke Beranda</button>
+            </div>
+        </div>
+
+        <!-- Halaman 5: Tentang Kami -->
+        <div id="about" class="page">
+            <div class="booking-form">
+                <h2 style="text-align: center; color: #667eea; margin-bottom: 30px;">Tentang ConcertTix</h2>
+                
+                <p style="color: #666; line-height: 1.8; margin-bottom: 20px;">
+                    ConcertTix adalah platform pemesanan tiket konser online terpercaya di Indonesia. Kami berkomitmen untuk memberikan pengalaman terbaik dalam pemesanan tiket konser musik favorit Anda.
+                </p>
+
+                <h3 style="color: #667eea; margin: 30px 0 15px;">Mengapa Memilih ConcertTix?</h3>
+                
+                <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h4 style="color: #333; margin-bottom: 10px;">✓ Mudah dan Cepat</h4>
+                    <p style="color: #666; margin-bottom: 20px;">Proses pemesanan yang simpel dan user-friendly dalam hitungan menit.</p>
+
+                    <h4 style="color: #333; margin-bottom: 10px;">✓ Aman dan Terpercaya</h4>
+                    <p style="color: #666; margin-bottom: 20px;">Sistem pembayaran yang aman dengan perlindungan data pelanggan.</p>
+
+                    <h4 style="color: #333; margin-bottom: 10px;">✓ Beragam Pilihan</h4>
+                    <p style="color: #666; margin-bottom: 20px;">Berbagai genre musik dan lokasi konser di seluruh Indonesia.</p>
+
+                    <h4 style="color: #333; margin-bottom: 10px;">✓ Customer Service 24/7</h4>
+                    <p style="color: #666;">Tim support kami siap membantu Anda kapan saja.</p>
+                </div>
+
+                <p style="color: #666; line-height: 1.8; margin-top: 30px; text-align: center;">
+                    Bergabunglah dengan ribuan penggemar musik yang telah mempercayai ConcertTix!
+                </p>
+            </div>
+        </div>
+
+        <!-- Halaman 6: Kontak -->
+        <div id="contact" class="page">
+            <div class="booking-form">
+                <h2 style="text-align: center; color: #667eea; margin-bottom: 30px;">Hubungi Kami</h2>
+                
+                <div style="background: #f5f5f5; padding: 30px; border-radius: 10px; margin-bottom: 30px;">
+                    <h3 style="color: #333; margin-bottom: 20px;">Informasi Kontak</h3>
+                    
+                    <p style="color: #666; margin: 15px 0;">
+                        <strong>📍 Alamat:</strong><br>
+                        Jl. Sudirman No. 123, Jakarta Pusat, 10220
+                    </p>
+                    
+                    <p style="color: #666; margin: 15px 0;">
+                        <strong>📧 Email:</strong><br>
+                        info@concerttix.com
+                    </p>
+                    
+                    <p style="color: #666; margin: 15px 0;">
+                        <strong>📱 Telepon:</strong><br>
+                        +62 21 1234 5678
+                    </p>
+                    
+                    <p style="color: #666; margin: 15px 0;">
+                        <strong>💬 WhatsApp:</strong><br>
+                        +62 812 3456 7890
+                    </p>
+                </div>
+
+                <h3 style="color: #333; margin-bottom: 20px;">Kirim Pesan</h3>
+                
+                <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" placeholder="Nama lengkap Anda">
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="email@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Subjek</label>
+                    <input type="text" placeholder="Subjek pesan">
+                </div>
+
+                <div class="form-group">
+                    <label>Pesan</label>
+                    <textarea rows="5" placeholder="Tulis pesan Anda di sini..."></textarea>
+                </div>
+
+                <button class="btn" onclick="alert('Pesan telah terkirim! Kami akan segera menghubungi Anda.')" style="width: 100%;">Kirim Pesan</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Twitter">🐦</a>
+                <a href="#" title="YouTube">📺</a>
+            </div>
+            <p style="margin: 20px 0;">&copy; 2024 ConcertTix. All Rights Reserved.</p>
+            <p style="color: #666; font-size: 14px;">Platform Pemesanan Tiket Konser Terpercaya di Indonesia</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentConcert = {
+            name: '',
+            location: '',
+            date: '',
+            price: 0
+        };
+
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function selectConcert(name, location, date, price) {
+            currentConcert = { name, location, date, price };
+            document.getElementById('selectedConcert').value = `${name} - ${location} (${date})`;
+            document.getElementById('basePrice').textContent = formatRupiah(price);
+            showPage('booking');
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const qty = parseInt(document.getElementById('ticketQty').value) || 1;
+            const category = parseFloat(document.getElementById('ticketCategory').value);
+            const categoryText = document.getElementById('ticketCategory').selectedOptions[0].text;
+            
+            const total = currentConcert.price * qty * category;
+            
+            document.getElementById('qtyDisplay').textContent = qty;
+            document.getElementById('categoryDisplay').textContent = categoryText;
+            document.getElementById('totalPrice').textContent = formatRupiah(total);
+        }
+
+        function processBooking() {
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const qty = document.getElementById('ticketQty').value;
+
+            if (!name || !email || !phone) {
+                alert('Mohon lengkapi semua data!');
+                return;
+            }
+
+            const bookingCode = 'CTX' + Date.now().toString().slice(-8);
+            const total = document.getElementById('totalPrice').textContent;
+
+            document.getElementById('bookingCode').textContent = bookingCode;
+            document.getElementById('confirmName').textContent = name;
+            document.getElementById('confirmEmail').textContent = email;
+            document.getElementById('confirmConcert').textContent = currentConcert.name;
+            document.getElementById('confirmQty').textContent = qty + ' tiket';
+            document.getElementById('confirmTotal').textContent = total;
+
+            showPage('confirmation');
+        }
+
+        function formatRupiah(number) {
+            return 'Rp ' + number.toLocaleString('id-ID');
+        }
+    </script>
+</body>
+</html>

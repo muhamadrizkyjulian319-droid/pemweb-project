@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanMyConcert - FAQ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand brand-gradient" href="index.html">🎵 PlanMyConcert</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="concerts.html">Konser</a></li>
+                        <li class="nav-item"><a class="nav-link" href="booking.html">Pemesanan</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Galeri</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">Tentang</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
+                        <li class="nav-item"><a class="nav-link" href="terms.html">Ketentuan</a></li>
+                    </ul>
+                    <div class="ms-3 d-flex align-items-center">
+                        <label class="form-check-label me-2 text-muted">Dark</label>
+                        <input type="checkbox" id="darkToggle" class="form-check-input">
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Pertanyaan yang Sering Diajukan</h1>
+            <p>Temukan jawaban cepat seputar PlanMyConcert.</p>
+        </section>
+
+        <section class="accordion" id="faqAcc">
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#q1">Bagaimana cara memesan tiket?</button></h2>
+                <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc">
+                    <div class="accordion-body">Pilih konser di halaman <a href="concerts.html">Konser</a>, lalu lanjutkan ke <a href="booking.html">Pemesanan</a>.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q2">Metode pembayaran apa yang tersedia?</button></h2>
+                <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                    <div class="accordion-body">Transfer bank, e-wallet, dan kartu kredit.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q3">Apakah ada refund?</button></h2>
+                <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                    <div class="accordion-body">Kebijakan refund mengikuti <a href="terms.html">Ketentuan</a> yang berlaku.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-4">
+            <img src="image/faq.jpg" width="100" alt="FAQ" class="img-fluid rounded">
+            <p class="text-white mt-2">Masih bingung? Hubungi kami di <a href="contact.html">Kontak</a> atau lihat <a href="https://www.youtube.com/@STTNF" target="_blank" rel="noopener">YouTube</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="d-flex justify-content-center gap-3 mb-3">
+                <a href="https://www.instagram.com/sttnf_official/" target="_blank" rel="noopener">📷</a>
+                <a href="https://www.youtube.com/@STTNF" target="_blank" rel="noopener">📺</a>
+                <a href="https://x.com/STTTerpaduNF1" target="_blank" rel="noopener">🐦</a>
+            </div>
+            <p>© 2026 PlanMyConcert by Kelompok 5.</p>
+            <p class="text-muted">Platform Pemesanan Tiket Konser Terpercaya di Indonesia</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

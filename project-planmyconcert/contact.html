@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanMyConcert - Kontak</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand brand-gradient" href="index.html">🎵 PlanMyConcert</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="concerts.html">Konser</a></li>
+                        <li class="nav-item"><a class="nav-link" href="booking.html">Pemesanan</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Galeri</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">Tentang</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
+                        <li class="nav-item"><a class="nav-link" href="terms.html">Ketentuan</a></li>
+                    </ul>
+                    <div class="ms-3 d-flex align-items-center">
+                        <label class="form-check-label me-2 text-muted">Dark</label>
+                        <input type="checkbox" id="darkToggle" class="form-check-input">
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h1>Hubungi Kami</h1>
+            <p>Tim support kami siap membantu Anda kapan saja.</p>
+        </section>
+
+        <section class="row g-4">
+            <article class="col-md-5">
+                <div class="card card-ct p-4">
+                    <h5>Informasi Kontak</h5>
+                    <p><strong>📍 Alamat:</strong><br>Jalan Lenteng Agung Raya No.20 RT.5/RW.1 Lenteng Agung, Srengseng Sawah, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12640</p>
+                    <p><strong>📧 Email:</strong><br>info@nurulfikri.ac.id</p>
+                    <p><strong>📱 Telepon:</strong><br>(021) 7863191</p>
+                    <p><strong>💬 WhatsApp:</strong><br>+62 857-1624-3174</p>
+                </div>
+            </article>
+            <article class="col-md-7">
+                <div class="card card-ct p-4">
+                    <h5>Kirim Pesan</h5>
+                    <div class="mb-3"><label class="form-label">Nama</label><input id="cName" type="text" class="form-control" placeholder="Nama lengkap Anda"></div>
+                    <div class="mb-3"><label class="form-label">Email</label><input id="cEmail" type="email" class="form-control" placeholder="email@example.com"></div>
+                    <div class="mb-3"><label class="form-label">Subjek</label><input id="cSubject" type="text" class="form-control" placeholder="Subjek pesan"></div>
+                    <div class="mb-3"><label class="form-label">Pesan</label><textarea id="cMessage" rows="5" class="form-control" placeholder="Tulis pesan Anda di sini..."></textarea></div>
+                    <button class="btn-ct w-100" onclick="submitContact()">Kirim Pesan</button>
+                </div>
+            </article>
+        </section>
+     
+        <section class="my-4">
+            <img src="image/contact.jpg" width="100" alt="Kontak" class="img-fluid rounded">
+            <p class="text-white mt-2">Butuh jawaban cepat? Baca <a href="faq.html">FAQ</a> atau cek <a href="https://www.instagram.com/sttnf_official/" target="_blank" rel="noopener">Instagram</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="d-flex justify-content-center gap-3 mb-3">
+                <a href="https://www.instagram.com/sttnf_official/" target="_blank" rel="noopener">📷</a>
+                <a href="https://www.youtube.com/@STTNF" target="_blank" rel="noopener">📺</a>
+                <a href="https://x.com/STTTerpaduNF1" target="_blank" rel="noopener">🐦</a>
+            </div>
+            <p>© 2026 PlanMyConcert by Kelompok 5.</p>
+            <p class="text-muted">Platform Pemesanan Tiket Konser Terpercaya di Indonesia</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
