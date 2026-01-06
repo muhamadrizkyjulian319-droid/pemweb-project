@@ -78,6 +78,7 @@ Website sudah **responsif** untuk tampilan desktop dan mobile.
 
 ## 📂 Struktur Folder
 
+```
 /PlanMyConcert
 │── index.html
 │── about.html
@@ -95,6 +96,7 @@ Website sudah **responsif** untuk tampilan desktop dan mobile.
 │    └── script.js
 │── /image
 │    └── (about.jpg, aespa - Jakarta.jpg, aespa - SYNK.jpg, ATEEZ - ATEEZ 2026 World Tour.jpg, ATEEZ - Jakarta.jpg, bg pmc.jpg, BLACK PINK - Jakarta.jpg, blog.jpg, contact.jpg, Deep Purple & Slank - All Greatest Hits Live.jpg, demodark-beranda.png, demodark-blog.png, demodark-FAQ.png, demodark-galeri.png, demodark-ketentuan.png, demodark-konfirmasi.png, demodark-konser.png, demodark-kontak.png, demodark-pemesanan.png, demodark-tentang.png, demolight-beranda.png, demolight-blog.png, demolight-FAQ.png, demolight-galeri.png, demolight-ketentuan.png, demolight-konfirmasi.png, demolight-konser.png, demolight-kontak.png, demolight-pemesanan.png, demolight-tentang.png, Dream Theater - Jakarta.jpg, Dream Theater.jpg, EXO - Jakarta.jpg, faq.jpg, Hammersonic Festival 2026.jpg, hero 1.jpg, hero 2.jpg, hero 3.jpg, Konser - Jakarta.jpg, NCT - Jakarta.jpg, NCT WISH - INTO THE WISH.jpg, pemesanan.jpg, RIIZE - Jakarta.jpg, RIIZE - RIIZING LOUD.jpg, terms.jpg, TREASURE - Jakarta.jpg, TREASURE - PULSE ON IN Jakarta.jpg, Westlife - A Gala Evening.jpg)
+```
 
 ---
 
