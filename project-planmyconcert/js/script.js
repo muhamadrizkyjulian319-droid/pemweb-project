@@ -117,15 +117,3 @@ function openImageModal(src, caption) {
     const modal = new bootstrap.Modal(document.getElementById("imageModal"));
     modal.show();
 }
-
-// Simple hero slider (auto)
-function initSlider() {
-    const slides = document.querySelectorAll(".slide");
-    if (!slides.length) return;
-    let i = 0;
-    setInterval(() => {
-        slides.forEach(s => s.classList.add("d-none"));
-        slides[i].classList.remove("d-none");
-        i = (i + 1) % slides.length;
-    }, 3500);
-}

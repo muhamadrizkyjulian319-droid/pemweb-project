@@ -63,7 +63,6 @@ Website sudah **responsif** untuk tampilan desktop dan mobile.
 4. **Booking system** dengan perhitungan total harga tiket  
 5. **Confirmation page** dengan kode booking unik  
 6. **Gallery modal popup** untuk menampilkan gambar besar  
-7. **Hero slider otomatis**  
 
 ---
 
